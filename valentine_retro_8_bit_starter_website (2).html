@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Narrak Club — Valentine Quest</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #ffb6d5, #ff7eb3);
+      color: #7a003c;
+      font-family: 'Press Start 2P', cursive;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+
+    .screen {
+      border: 6px solid #ff4f9a;
+      padding: 28px;
+      background: #ffe6f0;
+      box-shadow: 0 0 0 6px #ff9acb;
+      width: 100%;
+      max-width: 620px;
+      text-align: center;
+      position: relative;
+      opacity: 1;
+      transition: opacity 0.8s ease;
+      z-index: 2;
+    }
+
+    .hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: 16px;
+      margin-bottom: 18px;
+      color: #ff9ecb;
+      text-shadow: 2px 2px #ff2f92;
+      animation: blink 1.2s infinite;
+    }
+
+    p {
+      font-size: 10px;
+      line-height: 1.8;
+      margin-bottom: 18px;
+      transition: opacity 0.6s ease;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+
+    .fade-in {
+      opacity: 1;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      font-family: inherit;
+      font-size: 10px;
+      background: #ffffff;
+      color: #7a003c;
+      border: 4px solid #ff4f9a;
+      outline: none;
+      margin-bottom: 14px;
+    }
+
+    input::placeholder {
+      color: #ff7eb3;
+    }
+
+    .btn {
+      padding: 12px 18px;
+      font-family: inherit;
+      font-size: 10px;
+      background: #ff2f92;
+      color: #120014;
+      border: 4px solid #ffd6e7;
+      cursor: pointer;
+      box-shadow: 4px 4px 0 #000;
+    }
+
+    .btn:hover { background: #ffd6e7; }
+
+    .heart {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #ff77aa;
+      animation: float 6s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh) scale(1); opacity: 1; }
+      to { transform: translateY(-20vh) scale(0.5); opacity: 0; }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    @media (max-width: 480px) {
+      .screen {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 14px;
+      }
+
+      p {
+        font-size: 9px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+      h1 {
+        font-size: 14px;
+      }
+
+      p {
+        font-size: 9px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PRESS START SCREEN -->
+  <div class="screen" id="startScreen">
+    <h1>❤ NARRAK CLUB ❤</h1>
+    <p>
+      LOVE HAS MANY FORMS
+      BUT HAVE YOU MET THEM ALL?
+      <br /><br />
+    </p>
+    <button class="btn" onclick="startGame()">START</button>
+  </div>
+
+  <!-- MAIN GAME SCREEN -->
+
+  <div class="screen hidden" id="gameScreen">
+    <h1>WHAT TO DO ON YOUR VALENTINE'S DAY</h1>
+
+    <p id="text">
+      ENTER YOUR NAME,
+      PLAYER.
+      <br /><br />
+      LOVE'S CALLING...
+    </p>
+
+    <input type="text" id="nameInput" placeholder="TYPE YOUR NAME..." />
+    <button class="btn" onclick="generateTodo()">SUBMIT</button>
+  </div>
+
+  <script>
+  const todos = [
+    "KONSUL TAROT TENTANG HUBUNGAN KALIAN",
+    "MARATHON FILM DUA PULUH EMPAT JAM",
+    "COSPLAY JADI KHUN THEE DAN PEACHAYARAT",
+    "MAIN GAME BERDUA",
+    "TEBAK-TEBAKAN KHODAM",
+    "TELL THEM HOW MUCH YOU APPRECIATE THEM",
+    "BE AFFECTIONATE TO YOUR LOVED ONES CIUM PELUK JUBJUB",
+    "BUILD RUMAH DI HEARTOPIA"
+  ];
+
+  function startGame() {
+    const start = document.getElementById('startScreen');
+    const game = document.getElementById('gameScreen');
+
+    start.style.opacity = '0';
+
+    setTimeout(() => {
+      start.style.display = 'none';
+      game.style.display = 'block';
+      game.style.opacity = '1';
+    }, 600);
+  }
+
+  function generateTodo() {
+    const name = document.getElementById('nameInput').value.trim();
+    if (!name) return;
+
+    const textEl = document.getElementById('text');
+    const task = todos[Math.floor(Math.random() * todos.length)];
+
+    textEl.style.opacity = '0';
+
+    setTimeout(() => {
+      textEl.innerHTML = `HALO, ${name.toUpperCase()} ❤<br /><br />HARI INI KAMU HARUS:<br /><br />${task}`;
+      textEl.style.opacity = '1';
+    }, 500);
+  }
+</script>
+
+</body>
+</html>
