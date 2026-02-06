@@ -17,13 +17,13 @@
       justify-content: center;
       background: #ffb6d9;
       font-family: 'Press Start 2P', cursive;
-      color: #7a003c;
+      color: #f183b0;
     }
 
     .container {
-      background: #ffe6f2;
-      border: 6px solid #ff4f9a;
-      box-shadow: 0 0 0 6px #ff9acb;
+      background: #c43771;
+      border: 6px solid #c43771;
+      box-shadow: 0 0 0 6px #fac4d2;
       padding: 24px;
       width: 100%;
       max-width: 520px;
@@ -82,16 +82,20 @@
 
   <script>
     const todos = [
-      "KONSUL TAROT TENTANG HUBUNGAN KALIAN",
+      "KONSUL TAROT SOAL HUBUNGAN KALIAN",
       "MARATHON FILM DUA PULUH EMPAT JAM",
       "COSPLAY JADI KHUN THEE DAN PEACHAYARAT",
       "MAIN GAME BARENG YOUR FINESHYT",
       "DENGERIN LAGU KESUKAAN KAMU",
-      "MAKAN MAKANAN YANG KAMU LAGI NGIDAM BANGET",
+      "HUNTING MAKANAN YANG KAMU LAGI NGIDAM BANGET",
       "BIKIN PLAYLIST BUAT NAIKIN MOOD",
       "BEBERSIH ISI GALERI YANG ISINYA SCREENSHOT DARI MANTAN",
       "NONTON LONG LIVE LOVE",
       "TEBAK-TEBAKAN KHODAM",
+      "BELI ALL VARIANT DUBAI CHEWY COOKIE",
+      "JOURNALING ON HOW MUCH YOU LOVE YOURSELF",
+      "KASIH HADIAH BUAT YOUR LOVED ONE",
+      "POST YOUR MOST FAVORITE LOVE SONG",
       "TELL THEM HOW MUCH YOU APPRECIATE THEM",
       "CIUM PELUK JUBJUB YOUR FINESHYT KAMU",
       "BUILD RUMAH DI HEARTOPIA"
@@ -117,8 +121,8 @@
         if (!name) return;
         const task = todos[Math.floor(Math.random() * todos.length)];
         app.innerHTML = `
-          <h1>HELLO, ${name.toUpperCase()} ❤</h1>
-          <p>HARI INI KAMU HARUS:<br /><br />${task}</p>
+          <h1>HAI, ${name.toUpperCase()} !</h1>
+          <p>KAYAKNYA HARI INI KAMU HARUS,<br /><br />${task}</p>
         `;
       }
     };
